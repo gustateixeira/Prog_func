@@ -81,3 +81,78 @@ multiplic x y = multiplic x (y-1) + x
         
 
 
+
+
+{- Defina uma função recursiva euclid :: Int -> Int -> Int que implementa o 
+Algoritmo de Euclides para calcular o máximo divisor comum (MDC) entre dois números 
+inteiros não negativos.-}
+
+euclid :: Int -> Int -> Int 
+
+euclid 0 b = b
+
+euclid a 0 = a 
+
+euclid a b = euclid n r
+        where n = b
+              r = a `mod` b
+
+
+{-
+euclid 270 192 = euclid 192 78
+
+euclid 192 78 = euclid 78 36
+
+euclid 78 36 = euclid 36 6
+
+euclid 36 6 = euclid 6 0
+
+euclid 6 0 = 6
+
+logo: 
+
+euclid 270 192 = 6
+
+-}
+
+
+{-
+a) Decide se todos os elementos de uma lista satisfazem um predicado.
+all :: (a -> Bool) -> [a] -> Bool
+-}
+
+all' :: (a -> Bool) -> [a] -> Bool
+
+
+
+all' p (l:ls) | p(l) == True = all' p ls
+              | otherwise = False
+
+{-b)
+ Decide se pelo menos um dos elementos de uma lista satisfaz um predicado.
+any :: (a -> Bool) -> [a] -> Bool-}
+
+
+any' :: (a -> Bool) -> [a] -> Bool
+
+any' p (l:ls) | p(l) == False = any' p ls
+              | otherwise = True
+
+
+{-c) Seleciona os elementos de uma lista enquanto eles satisfazem um predicado.
+takeWhile :: (a -> Bool) -> [a] -> [a]
+-}
+
+takeWhile' p (l:ls) | p(l) == True = [l] ++ takeWhile' p ls
+                    | otherwise = []
+
+
+{-d) Remove os elementos de uma lista enquanto eles satisfazem um predicado.
+dropWhile :: (a -> Bool) -> [a] -> [a]
+-}
+
+
+dropWhile' :: (a -> Bool) -> [a] -> [a]
+
+dropWhile' p (l:ls) | p(l) == True = dropWhile' p ls
+                    | otherwise = ls
